@@ -73,10 +73,27 @@ public class Restaurant {
         return name;
     }
 
-    public double getPrice(String item) {
-        if(menu.contains(item)) {
-            return menu.indexOf(1);
+    public double getPrice(String itemName) {
+        double totalPrice = 0.0;
+        for (Item item : menu) {
+            if (item.name.equals(itemName)) {
+                totalPrice += item.price;
+            }
         }
-        return 0.0;
+        return totalPrice;
+    }
+
+
+    public double getPrices(String[] itemName) {
+        double totalPrice = 0.0;
+        for (Item item : menu) {
+            for (int i = 0; i < itemName.length; i++) {
+                if (item.name.equals(itemName[i])) {
+                    totalPrice += item.price;
+                }
+            }
+
+        }
+        return totalPrice;
     }
 }

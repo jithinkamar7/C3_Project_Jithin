@@ -83,11 +83,22 @@ class RestaurantTest {
     @Test
     public void return_the_order_value_when_name_of_item_given() {
         restaurant.addToMenu("Sweet corn soup", 119);
-        //restaurant.addToMenu("Vegetable lasagne", 269);
+        restaurant.addToMenu("Vegetable lasagne", 269);
 
         String itemName = "Sweet corn soup";
         double totalPrice = restaurant.getPrice(itemName);
-        assertNotNull(restaurant.getPrice(itemName));
+        assertEquals(119,restaurant.getPrice(itemName));
+
+    }
+
+    @Test
+    public void return_the_order_value_when_name_of_items_given() {
+        restaurant.addToMenu("Sweet corn soup", 119);
+        restaurant.addToMenu("Vegetable lasagne", 269);
+
+        String[] itemName ={"Sweet corn soup","Vegetable lasagne"};
+        double totalPrice = restaurant.getPrices(itemName);
+        assertEquals(388,restaurant.getPrices(itemName));
 
     }
 }
